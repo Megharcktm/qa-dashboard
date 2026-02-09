@@ -33,7 +33,7 @@ export class DevRevService {
   private token: string;
 
   constructor() {
-    const token = process.env.DEVREV_PAT_TOKEN;
+    const token = process.env.DEVREV_PAT_TOKEN?.trim();
     if (!token) {
       throw new Error('DEVREV_PAT_TOKEN environment variable is not set');
     }
