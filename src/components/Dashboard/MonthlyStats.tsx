@@ -48,17 +48,6 @@ interface AutomationStats {
   count: number;
 }
 
-interface AutomationPlan {
-  id: number;
-  feature_name: string;
-  release_status?: string;
-  complexity?: string;
-  owner?: string;
-  weekly_plan?: string;
-  automation_status?: string;
-  test_scenario_document?: string;
-  notes?: string;
-}
 
 interface PlanAutomationStats {
   status: string;
@@ -519,11 +508,11 @@ export const MonthlyStats: React.FC<MonthlyStatsProps> = ({ onDateRangeChange })
                                 <Cell key={`cell-${index}`} fill={entry.fill} />
                               ))}
                             </RechartsPie>
-                            <Tooltip formatter={(value, name, props) => {
+                            <Tooltip formatter={((value, _name, props) => {
                               const total = automationData.reduce((sum, item) => sum + item.count, 0);
                               const percent = ((value / total) * 100).toFixed(1);
-                              return [`${value} tickets (${percent}%)`, props.payload.status];
-                            }} />
+                              return `${value} tickets (${percent}%)`;
+                            })} />
                             <Legend
                               verticalAlign="bottom"
                               height={36}
@@ -557,7 +546,7 @@ export const MonthlyStats: React.FC<MonthlyStatsProps> = ({ onDateRangeChange })
                                 <Cell key={`cell-${index}`} fill={entry.fill} />
                               ))}
                             </RechartsPie>
-                            <Tooltip formatter={(value, name, props) => {
+                            <Tooltip formatter={((_value, _name, props) => {
                               const total = planAutomationData.reduce((sum, item) => sum + item.count, 0);
                               const percent = ((value / total) * 100).toFixed(1);
                               return [`${value} plans (${percent}%)`, props.payload.status];
