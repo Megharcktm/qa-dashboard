@@ -7,9 +7,14 @@ export interface CustomError {
   status?: number;
 }
 
-// Get base URL from environment or use default
+// Get base URL from environment or use relative path
 const getBaseURL = (): string => {
-  return import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  // In production, use VITE_API_URL if provided, otherwise use relative /api
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  // Default to relative /api path (works when frontend and backend are on same domain)
+  return '/api';
 };
 
 // Create axios instance
