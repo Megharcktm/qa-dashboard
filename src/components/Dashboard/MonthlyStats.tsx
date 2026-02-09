@@ -498,7 +498,7 @@ export const MonthlyStats: React.FC<MonthlyStatsProps> = ({ onDateRangeChange })
                               cx="50%"
                               cy="50%"
                               labelLine={true}
-                              label={({ status, count, percent }) => `${status}: ${count} (${(percent * 100).toFixed(1)}%)`}
+                              label={(props: any) => `${props.status}: ${props.count} (${(props.percent * 100).toFixed(1)}%)`}
                               outerRadius={80}
                               fill="#8884d8"
                               dataKey="count"
@@ -516,7 +516,7 @@ export const MonthlyStats: React.FC<MonthlyStatsProps> = ({ onDateRangeChange })
                             <Legend
                               verticalAlign="bottom"
                               height={36}
-                              formatter={(value, entry) => `${entry.payload.status}: ${entry.payload.count}`}
+                              formatter={(value, entry) => `${(entry as any).payload.status}: ${(entry as any).payload.count}`}
                             />
                           </PieChart>
                         </ResponsiveContainer>
@@ -536,7 +536,7 @@ export const MonthlyStats: React.FC<MonthlyStatsProps> = ({ onDateRangeChange })
                               cx="50%"
                               cy="50%"
                               labelLine={true}
-                              label={({ status, count, percent }) => `${status}: ${count} (${(percent * 100).toFixed(1)}%)`}
+                              label={(props: any) => `${props.status}: ${props.count} (${(props.percent * 100).toFixed(1)}%)`}
                               outerRadius={80}
                               fill="#8884d8"
                               dataKey="count"
@@ -554,7 +554,7 @@ export const MonthlyStats: React.FC<MonthlyStatsProps> = ({ onDateRangeChange })
                             <Legend
                               verticalAlign="bottom"
                               height={36}
-                              formatter={(value, entry) => `${entry.payload.status}: ${entry.payload.count}`}
+                              formatter={(value, entry) => `${(entry as any).payload.status}: ${(entry as any).payload.count}`}
                             />
                           </PieChart>
                         </ResponsiveContainer>

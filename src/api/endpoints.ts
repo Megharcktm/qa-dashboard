@@ -181,7 +181,7 @@ export const automationPlansAPI = {
    * Delete an automation plan
    */
   deletePlan: async (id: number): Promise<any> => {
-    return API.delete(`/automation-plans/${id}`);
+    return API.deleteResource(`/automation-plans/${id}`);
   },
 };
 

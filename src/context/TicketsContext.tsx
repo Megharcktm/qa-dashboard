@@ -119,6 +119,8 @@ export const TicketsProvider: React.FC<{ children: ReactNode }> = ({ children })
       const data = await ticketsAPI.getTickets(finalFilters, {
         page: finalPagination.page,
         limit: finalPagination.limit,
+        total: finalPagination.total,
+        totalPages: finalPagination.totalPages,
       });
 
       dispatch({

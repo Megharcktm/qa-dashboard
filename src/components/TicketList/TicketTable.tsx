@@ -103,9 +103,9 @@ export const TicketTable: React.FC<TicketTableProps> = ({
       rowKey="id"
       pagination={{
         current: pagination.page,
-        pageSize: pagination.limit,
+        pageSize: Number(pagination.limit),
         total: pagination.total,
-        totalBoundaryShowSizeChanger: true,
+        totalBoundaryShowSizeChanger: 50,
         pageSizeOptions: ['10', '20', '50', '100'],
         onChange: onPaginationChange,
       }}

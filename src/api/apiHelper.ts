@@ -9,7 +9,7 @@ export interface CustomError {
 
 // Get base URL from environment or use default
 const getBaseURL = (): string => {
-  return import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  return (import.meta.env as any).VITE_API_URL || 'http://localhost:5000/api';
 };
 
 // Create axios instance
@@ -101,5 +101,8 @@ export const deleteResource = async <T = any>(
   const response = await apiClient.delete<T>(url, config);
   return response.data;
 };
+
+export const deletePatch = deleteResource;
+export const deleteApi = deleteResource;
 
 export default apiClient;

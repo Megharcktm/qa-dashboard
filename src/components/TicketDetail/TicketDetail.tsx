@@ -126,10 +126,10 @@ export const TicketDetail: React.FC = () => {
                               <div style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', fontSize: '14px' }}>
                                 {msg.text}
                               </div>
-                              {msg.files && msg.files.length > 0 && (
+                              {(msg as any).files && (msg as any).files.length > 0 && (
                                 <div style={{ marginTop: '8px', fontSize: '13px', color: '#666' }}>
-                                  📎 {msg.files.length === 1 ? 'Media shared' : `${msg.files.length} media files shared`}
-                                  {msg.files.map((file, fidx) => (
+                                  📎 {(msg as any).files.length === 1 ? 'Media shared' : `${(msg as any).files.length} media files shared`}
+                                  {(msg as any).files.map((file: any, fidx: number) => (
                                     <div key={fidx} style={{ marginTop: '4px', color: '#1890ff' }}>
                                       • {file.name}
                                     </div>

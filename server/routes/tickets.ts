@@ -82,9 +82,9 @@ router.get('/debug', (req: Request, res: Response, next: NextFunction) => {
 
     // Parse raw data to see structure
     let parsedRawData = null;
-    if (rawDataCheck?.raw_data) {
+    if ((rawDataCheck as any)?.raw_data) {
       try {
-        parsedRawData = JSON.parse(rawDataCheck.raw_data);
+        parsedRawData = JSON.parse((rawDataCheck as any).raw_data);
       } catch (e) {
         parsedRawData = 'Error parsing raw_data';
       }
