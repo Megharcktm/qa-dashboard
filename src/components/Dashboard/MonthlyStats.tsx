@@ -546,11 +546,11 @@ export const MonthlyStats: React.FC<MonthlyStatsProps> = ({ onDateRangeChange })
                                 <Cell key={`cell-${index}`} fill={entry.fill} />
                               ))}
                             </RechartsPie>
-                            <Tooltip formatter={((_value, _name, props) => {
+                            <Tooltip formatter={((value, _name, props) => {
                               const total = planAutomationData.reduce((sum, item) => sum + item.count, 0);
                               const percent = ((value / total) * 100).toFixed(1);
-                              return [`${value} plans (${percent}%)`, props.payload.status];
-                            }} />
+                              return `${value} plans (${percent}%)`;
+                            })} />
                             <Legend
                               verticalAlign="bottom"
                               height={36}
