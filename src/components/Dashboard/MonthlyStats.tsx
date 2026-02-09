@@ -29,14 +29,13 @@ const getAutomationStatusColor = (status: string): string => {
       return '#faad14'; // Orange - In Progress
     case 'blocked':
     case 'no need':
-    case 'no need':
       return '#f5222d'; // Red - Blocked/No Need
     case 'can be automated in mar':
     case 'can be automated in march':
       return '#1890ff'; // Blue - Can be automated
     case 'pending':
     case 'not set':
-    case 'not set: ':
+    case 'not set:':
       return '#13c2c2'; // Cyan - Not Set/Pending
     default:
       return '#722ed1'; // Purple - Others
