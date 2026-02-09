@@ -76,6 +76,7 @@ const buildPath = path.join(__dirname, '../dist');
 try {
   const fs = await import('fs').then(m => m.promises);
   await fs.access(buildPath);
+  console.log(`✓ Serving React build from: ${buildPath}`);
 
   app.use(express.static(buildPath));
 
@@ -83,8 +84,9 @@ try {
   app.get('*', (req: Request, res: Response) => {
     res.sendFile(path.join(buildPath, 'index.html'));
   });
-} catch {
-  // Build directory doesn't exist, that's ok for development
+} catch (error) {
+  console.warn(`⚠ Build directory not found at ${buildPath}. Running in API-only mode.`);
+  console.warn('Make sure to run: npm run build');
 }
 
 // Error handling middleware
